@@ -10,7 +10,6 @@ export async function apiInstance<T>(
   const session: any = await getServerSessionData();
 
   const token = session?.user?.authToken;
-  console.log("session?.user: ", session?.user);
 
   const newOptions: RequestInit = {
     ...options,

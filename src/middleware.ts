@@ -13,6 +13,13 @@ export default withAuth(
     // Check if the user is authenticated
     const isAuthenticated = !!token;
 
+    if (isAuthenticated) {
+      if (req.nextUrl.pathname.startsWith("/api/auth/session")) {
+        console.log("user url on session");
+        return NextResponse.redirect(new URL("/", req.url));
+      }
+    }
+
     // Redirect unauthenticated users to the login page if trying to access protected routes
     if (
       !isAuthenticated &&
